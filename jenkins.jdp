@@ -9,7 +9,7 @@ pipeline{
         stage("test"){
             steps {
                 script {
-                    def res = sh returnStatus:true, "./test.sh bin/debug/cproj1"
+                    def res = sh returnStatus:true, script:"./test.sh bin/debug/cproj1"
                     if (res > 0) {
                         currentBuild.result=UNSTABLE
                     }
