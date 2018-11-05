@@ -3,19 +3,18 @@ pipeline{
     stages{
         stage ("build") {
             steps {
-                sh "make debug"
+                sh "make release"
             }
         }
         stage("test"){
             steps {
-                sh "./test.sh bin/debug/cproj1"
+                sh "./test.sh bin/release/cproj1"
             }
         }
-
-        post{
-            always{
-                sh "make clean"
-            }
+    }
+    post{
+        always{
+            sh "make clean"
         }
     }
 }
