@@ -11,7 +11,7 @@ pipeline{
                 script {
                     def res = sh returnStatus:true, script:"./test.sh bin/debug/cproj1"
                     if (res > 0) {
-                        currentBuild.result=UNSTABLE
+                        currentBuild.result="UNSTABLE"
                     }
                 }
             }
