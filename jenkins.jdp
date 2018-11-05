@@ -11,11 +11,11 @@ pipeline{
                 sh "./test.sh bin/debug/cproj1"
             }
         }
-
-        post{
-            always{
-                sh "make clean"
-            }
+    }
+    post{
+        always{
+            sh "make clean"
         }
     }
+    
 }
