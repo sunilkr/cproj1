@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage ("build") {
             steps {
-                sh "make debug"
+                sh "make release"
             }
         }
         stage("test"){
@@ -22,5 +22,4 @@ pipeline{
             sh "make clean"
         }
     }
-    
 }
