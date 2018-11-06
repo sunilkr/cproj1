@@ -6,10 +6,15 @@ pipeline{
                 sh "make release"
             }
         }
+        stage ("get-test-script"){
+            steps{
+                sh "wget https://raw.githubusercontent.com/sunilkr/elf-tests/master/test-release.sh"
+            }
+        }
         stage("test"){
             steps {
                 script {
-                    def res = sh returnStatus:true, script:"./test.sh bin/release/cproj1"
+                    def res = sh returnStatus:true, script:"./test-release.sh bin/release/cproj1"
                     if (res > 0) {
                         currentBuild.result="UNSTABLE"
                         echo "${res} tests failed."
