@@ -27,6 +27,7 @@ pipeline{
     post{
         always{
             sh "make clean"
+            sh "rm test-release.sh"
         }
     }
 }
