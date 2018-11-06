@@ -9,6 +9,7 @@ pipeline{
         stage ("get-test-script"){
             steps{
                 sh "wget https://raw.githubusercontent.com/sunilkr/elf-tests/master/test-release.sh"
+                sh "chmod u+x test-release.sh"
             }
         }
         stage("test"){
