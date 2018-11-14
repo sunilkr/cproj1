@@ -28,7 +28,7 @@ pipeline{
     post{
         always{
             sh "make clean"
-            sh "cat test-result.txt"
+//            sh "cat test-result.txt"
         }
     }
 }
