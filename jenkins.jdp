@@ -14,14 +14,13 @@ pipeline{
                 }
             }
             steps {
-                sh "./entry.sh debug /tmp/cproj1 >/tmp/result-debug.txt"
+                sh  "./entry.sh debug /tmp/cproj1"
             }
         }
     }
     post{
         always{
             sh "make clean"
-            sh "rm test-debug.sh"
         }
     }
 }
