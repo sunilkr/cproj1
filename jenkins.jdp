@@ -18,7 +18,7 @@ pipeline{
                 script {
                     sh "ls -la ./bin/debug"
                     sh "pwd"
-                    result = sh returnStdout:true, "entry.sh debug ./bin/debug/cproj1"
+                    result = sh returnStdout:true, script:"entry.sh debug ./bin/debug/cproj1"
                     writeFile file:"test-result.txt", text:"${result}", encoding:"utf-8"
                 }
                 
