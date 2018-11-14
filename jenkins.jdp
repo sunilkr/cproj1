@@ -18,7 +18,8 @@ pipeline{
                 script {
                     sh "ls -la ./bin/debug"
                     sh "pwd"
-                    result = sh storeStdout, "entry.sh debug ./bin/debug/cproj1 >test-result.txt"
+                    result = sh returnStdout, "entry.sh debug ./bin/debug/cproj1"
+                    writeFile file:"test-result.txt", text:"${result}", encoding:"utf-8"
                 }
                 
             }
@@ -27,7 +28,7 @@ pipeline{
     post{
         always{
             sh "make clean"
-            sh "cat test-results.txt"
+            sh "cat test-result.txt"
         }
     }
 }
