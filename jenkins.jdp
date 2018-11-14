@@ -11,6 +11,7 @@ pipeline{
                 docker{
                     image 'bintest:base'
                     args '-v /tmp:/tmp -u root:root'
+                    reuseNode true
                 }
             }
             steps {
