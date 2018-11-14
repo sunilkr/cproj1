@@ -15,7 +15,7 @@ pipeline{
             }
             steps {
                 sh "ls -la ."
-                sh  "/scripts/entry.sh debug bin/debug/cproj1"
+                sh "entry.sh debug ./bin/debug/cproj1"
             }
         }
     }
