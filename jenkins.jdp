@@ -18,8 +18,9 @@ pipeline{
                 script {
                     sh "ls -la ./bin/debug"
                     sh "pwd"
-                    result = sh returnStdout:true, script:"entry.sh debug ./bin/debug/cproj1"
-                    writeFile file:"test-result.txt", text:"${result}", encoding:"utf-8"
+                    result = sh returnStatus:true, script:"entry.sh debug ./bin/debug/cproj1 >test-result.txt"
+                    //writeFile file:"test-result.txt", text:"${result}", encoding:"utf-8"
+                    //if (result > 100)
                 }
                 
             }
