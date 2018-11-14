@@ -9,7 +9,7 @@ pipeline{
         stage("test"){
             agent{
                 docker{
-                    image 'bintest:base'
+                    image 'bintest:entry'
                     args '-v /tmp:/tmp'
                 }
             }
