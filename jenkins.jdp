@@ -17,13 +17,14 @@ pipeline{
             steps {
                 sh "ls -la ./bin/debug"
                 sh "pwd"
-                sh "entry.sh debug ./bin/debug/cproj1"
+                sh "entry.sh debug ./bin/debug/cproj1 >test-result.txt"
             }
         }
     }
-    // post{
-    //     always{
-    //         sh "make clean"
-    //     }
-    // }
+    post{
+        always{
+            sh "cat test-results.txt"
+            sh "make clean"
+        }
+    }
 }
