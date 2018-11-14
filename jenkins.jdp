@@ -10,11 +10,12 @@ pipeline{
             agent{
                 docker{
                     image 'bintest:base'
-                    args '-v ${pwd}/bin/debug:/tmp'
+                    args '-v /tmp:/tmp'
                 }
             }
             steps {
-                sh  "./entry.sh debug /tmp/cproj1"
+                sh "ls -la ."
+                sh  "/scripts/entry.sh debug bin/debug/cproj1"
             }
         }
     }
