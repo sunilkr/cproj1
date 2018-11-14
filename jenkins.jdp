@@ -9,13 +9,14 @@ pipeline{
         stage("test"){
             agent{
                 docker{
-                    image 'bintest:entry'
+                    image 'bintest:base'
                     args '-v /tmp:/tmp'
                 }
             }
             steps {
-                //sh "ls -la ."
-                sh "debug ./bin/debug/cproj1"
+                sh "ls -la /usr/local/bin"
+                sh "pwd"
+                sh "entry.sh debug ./bin/debug/cproj1"
             }
         }
     }
