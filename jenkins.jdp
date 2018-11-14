@@ -20,9 +20,9 @@ pipeline{
             }
         }
     }
-    post{
-        always{
-            sh "make clean"
-        }
-    }
+    // post{
+    //     always{
+    //         sh "make clean"
+    //     }
+    // }
 }
