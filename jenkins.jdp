@@ -19,7 +19,7 @@ pipeline{
                     sh "ls -la ./bin/debug"
                     sh "pwd"
                     result = sh returnStatus:true, script:"entry.sh debug ../bin/debug/cproj1 >test-result.txt"
-                    sh "junit.py test-result.py bintest.xml"
+                    sh "junit.py test-result.py -o bintest.xml"
                     //writeFile file:"test-result.txt", text:"${result}", encoding:"utf-8"
                     //if (result > 100)
                 }
