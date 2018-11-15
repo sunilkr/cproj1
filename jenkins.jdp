@@ -24,6 +24,11 @@ pipeline{
                     //if (result > 100)
                 }
             }
+            post{
+                always{
+                    junit "./*.xml"
+                }
+            }
         }
     }
     post{
