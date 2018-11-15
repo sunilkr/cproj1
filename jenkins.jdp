@@ -9,7 +9,7 @@ pipeline{
         stage("test"){
             agent{
                 docker{
-                    image 'bintest:base'
+                    image 'bintest:junit'
                     args '-v /tmp:/tmp -u root:root'
                     reuseNode true
                 }
@@ -18,11 +18,11 @@ pipeline{
                 script {
                     sh "ls -la ./bin/debug"
                     sh "pwd"
-                    result = sh returnStatus:true, script:"entry.sh debug ./bin/debug/cproj1 >test-result.txt"
+                    result = sh returnStatus:true, script:"entry.sh debug ../bin/debug/cproj1 >test-result.txt"
+                    sh "junit.py test-result.py bintest.xml"
                     //writeFile file:"test-result.txt", text:"${result}", encoding:"utf-8"
                     //if (result > 100)
                 }
-                
             }
         }
     }
