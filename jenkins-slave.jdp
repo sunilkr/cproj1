@@ -1,5 +1,5 @@
 pipeline{
-    agent "ubuntu1404"
+    agent any
     stages{
         stage ("build") {
             steps {
