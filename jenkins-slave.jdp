@@ -1,5 +1,7 @@
 pipeline{
-    agent remote
+    agent {
+        label "remote"
+    }
     stages{
         stage ("build") {
             steps {
