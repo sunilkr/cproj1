@@ -1,0 +1,34 @@
+pipeline{
+    agent "ubuntu1404"
+    stages{
+        stage ("build") {
+            steps {
+                sh "make release"
+            }
+        }
+        stage("test"){
+            steps {
+                script {
+                    // sh "ls -la ./bin/debug"
+                    // sh "pwd"
+                    result = sh returnStatus:true, script:"entry.sh release ./bin/release/cproj1 >test-result.txt"
+                    sh "junit.py test-result.txt -o bintest.xml"
+                    //writeFile file:"test-result.txt", text:"${result}", encoding:"utf-8"
+                    //if (result > 100)
+                }
+            }
+            post{
+                always{
+                    junit "bintest.xml"
+                }
+            }
+        }
+    }
+    post{
+        always{
+//            sh "make clean"
+            sh "cat test-result.txt"
+            sh "cat bintest.xml"
+        }
+    }
+}
